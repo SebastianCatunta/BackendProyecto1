@@ -1,7 +1,7 @@
 # BE-01 · La API no arranca: ReportsService no está registrado en ReportsModule
 
 - Área: Backend
-- Commit: d1a59d0
+- Commit: 6a9900c
 
 ## Ubicación
 - Endpoint: todos (la aplicación no inicia); en particular GET /api/v1/reports/*

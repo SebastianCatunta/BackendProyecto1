@@ -1,7 +1,7 @@
 # BE-02 · Login rechaza contraseñas válidas por exigir mínimo 12 caracteres
 
 - Área: Backend
-- Commit: PENDIENTE
+- Commit: 0bf0932
 
 ## Ubicación
 - Endpoint: POST /api/v1/auth/login
