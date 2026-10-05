@@ -52,7 +52,7 @@ export class UsersService implements OnModuleInit {
     if (query.role) filter.role = query.role;
     if (query.active !== undefined) filter.active = query.active;
     if (query.q) {
-      const pattern = new RegExp(escapeRegex(query.q.trim()));
+      const pattern = new RegExp(escapeRegex(query.q.trim()), 'i');
       filter.$or = [{ name: pattern }, { email: pattern }];
     }
 
