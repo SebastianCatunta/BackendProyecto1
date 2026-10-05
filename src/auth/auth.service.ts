@@ -15,12 +15,12 @@ export class AuthService {
   ) {}
 
   async login({ email, password }: LoginDto): Promise<{ accessToken: string }> {
-    await this.slowDownAttempts();
     const user = await this.usersService.findByEmailWithPassword(email);
     const valid = user ? await bcrypt.compare(password, user.passwordHash) : false;
 
     // Mismo mensaje para correo inexistente y clave incorrecta (no revela cuentas)
     if (!user || !valid || !user.active) {
+      await this.slowDownAttempts();
       throw new UnauthorizedException('Credenciales invalidas');
     }
     return this.issueToken(user);
