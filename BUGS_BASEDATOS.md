@@ -210,6 +210,14 @@ Datos del seed (`database/*.json`, los que carga `npm run db:import`). Diagnóst
 - **Después:** `"active":true`
 - **Cómo verificar:** Tras `npm run db:import`, E20210046 aparece "Activo" en Estudiantes (admin) y en el selector de "Matricular estudiante".
 
+## Bug #27 — El volumen de datos de Mongo no estaba montado (los datos no persistían)
+- **Archivo:** `docker-compose.yml` (líneas 10-11)
+- **Severidad / categoría:** high / migration-error (persistencia)
+- **Problema:** El volumen `mongo_data` estaba declarado al final del archivo, pero el servicio `mongo` no lo montaba: el commit `08b777c` había borrado `volumes: - mongo_data:/data/db` y dejado una línea en blanco. Mongo guardaba los datos en un volumen anónimo, así que `npm run db:down` (o recrear el contenedor) borraba toda la base, incluidas las matrículas y notas cargadas desde la app.
+- **Antes:** línea vacía entre `command:` y `healthcheck:`
+- **Después:** `volumes:` / `- mongo_data:/data/db` (igual que el primer commit `ed30984`)
+- **Cómo verificar:** `npm run db:down`, `npm run db:up` y `npm run db:import`; hacer un cambio desde la app (por ejemplo, matricular); `npm run db:down` y `npm run db:up` otra vez: el cambio sigue ahí y `docker volume ls` muestra `backendproyecto1_mongo_data`.
+
 ## Bugs de frontera (requieren coordinar con backend)
 - Ninguno pendiente: el equipo de backend ya corrigió el prefijo `/api` y el puerto.
 
