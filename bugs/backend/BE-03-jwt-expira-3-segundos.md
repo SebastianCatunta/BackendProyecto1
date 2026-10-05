@@ -1,7 +1,7 @@
 # BE-03 · El token JWT expira a los 3 segundos en vez de 1 hora
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 3c49b7b
 
 ## Ubicación
 - Endpoint: POST /api/v1/auth/login (y todas las rutas protegidas)

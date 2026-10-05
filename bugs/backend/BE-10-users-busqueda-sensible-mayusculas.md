@@ -1,7 +1,7 @@
 # BE-10 · La búsqueda de usuarios (q) distingue mayúsculas/minúsculas
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: a3995e1
 
 ## Ubicación
 - Endpoint: GET /api/v1/users?q=...

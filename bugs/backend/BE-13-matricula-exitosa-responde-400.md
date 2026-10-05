@@ -1,7 +1,7 @@
 # BE-13 · Matricular responde 400 "No se pudo confirmar la matricula" aunque se crea
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 23b06a7
 
 ## Ubicación
 - Endpoint: POST /api/v1/enrollments

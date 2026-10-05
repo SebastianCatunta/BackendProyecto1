@@ -1,7 +1,7 @@
 # BE-14 · Cancelar una matrícula no libera el cupo del grupo
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 81d2d07
 
 ## Ubicación
 - Endpoint: POST /api/v1/enrollments/:id/cancel

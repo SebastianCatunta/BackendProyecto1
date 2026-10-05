@@ -76,6 +76,8 @@ export class StudentsService {
     if (dto.program) await this.programsService.findOne(dto.program);
     const student = await this.model
       .findByIdAndUpdate(id, dto, { new: true, runValidators: true })
+      .populate('user', 'name email')
+      .populate('program', 'code name')
       .exec();
     if (!student) throw new NotFoundException('Estudiante no encontrado');
     return student;

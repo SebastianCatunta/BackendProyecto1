@@ -1,7 +1,7 @@
 # BE-17 · No se puede registrar una nota de 5.0 (máximo validado en 4.5)
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 95bc064
 
 ## Ubicación
 - Endpoint: PUT /api/v1/grades (y PUT /api/v1/grades/bulk)

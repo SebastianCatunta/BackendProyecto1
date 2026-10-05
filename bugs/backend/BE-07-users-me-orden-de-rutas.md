@@ -1,7 +1,7 @@
 # BE-07 · GET /users/me nunca llega a su handler (lo captura `:id`)
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: a35d966
 
 ## Ubicación
 - Endpoint: GET /api/v1/users/me

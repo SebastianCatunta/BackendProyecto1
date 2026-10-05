@@ -1,7 +1,7 @@
 # BE-22 · Cancelar matrícula responde 201 Created en vez de 200 OK
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 731a1c9
 
 ## Ubicación
 - Endpoint: POST /api/v1/enrollments/:id/cancel

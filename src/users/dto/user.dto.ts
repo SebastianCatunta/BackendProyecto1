@@ -2,6 +2,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsBoolean, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, Matches, MinLength } from 'class-validator';
 import { PaginationQueryDto } from '../../common/dto/pagination-query.dto';
+import { toBoolean } from '../../common/dto/query-helpers';
 import { Role } from '../../common/enums/role.enum';
 import { PASSWORD_MESSAGE, PASSWORD_PATTERN } from './create-user.dto';
 
@@ -53,7 +54,7 @@ export class UsersQueryDto extends PaginationQueryDto {
 
   @ApiPropertyOptional({ description: 'true = activos, false = inactivos' })
   @IsOptional()
-  @Transform(({ value }) => value === 'true' || value === true)
+  @Transform(toBoolean)
   @IsBoolean()
   active?: boolean;
 

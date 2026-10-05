@@ -1,7 +1,7 @@
 # BE-06 · Editar usuario rechaza el campo `name` (DTO con nombre de campo erróneo)
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: a3367a2
 
 ## Ubicación
 - Endpoint: PATCH /api/v1/users/:id
