@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthUser, CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -18,7 +18,6 @@ export class EvaluationsController {
   @ApiOperation({ summary: 'Crear una evaluacion' })
   @Roles(Role.Admin, Role.Docente)
   @Post()
-  @HttpCode(HttpStatus.BAD_REQUEST)
   create(@Body() dto: CreateEvaluationDto, @CurrentUser() user: AuthUser): Promise<Evaluation> {
     return this.evaluationsService.create(dto, user);
   }
