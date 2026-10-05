@@ -1,7 +1,7 @@
 # BE-15 · El módulo de evaluaciones está publicado en /evaluationslalala
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 1f99581
 
 ## Ubicación
 - Endpoint: GET/POST /api/v1/evaluations, GET/PATCH /api/v1/evaluations/:id

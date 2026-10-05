@@ -1,7 +1,7 @@
 # BE-25 · La API ignora la variable PORT y escucha siempre en 3001
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 8f45cf7
 
 ## Ubicación
 - Endpoint: arranque de la API (todas las rutas)

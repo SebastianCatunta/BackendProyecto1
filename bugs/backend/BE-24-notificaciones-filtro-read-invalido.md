@@ -1,7 +1,7 @@
 # BE-24 · El filtro `read` de mis notificaciones acepta cualquier texto y lo trata como `false`
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 383539b
 
 ## Ubicación
 - Endpoint: GET /api/v1/notifications/mine?read=...

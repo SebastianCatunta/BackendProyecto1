@@ -1,7 +1,7 @@
 # BE-18 · Una nota final de exactamente 3.0 queda como reprobada
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 1a10949
 
 ## Ubicación
 - Endpoint: POST /api/v1/grades/finalize/:enrollmentId (y POST /api/v1/groups/:id/finalize, que lo reutiliza)

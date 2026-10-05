@@ -1,7 +1,7 @@
 # BE-09 · Cambiar contraseña responde OK pero no guarda la nueva clave
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 0763a56
 
 ## Ubicación
 - Endpoint: PATCH /api/v1/auth/change-password

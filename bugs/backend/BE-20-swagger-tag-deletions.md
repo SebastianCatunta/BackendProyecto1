@@ -1,7 +1,7 @@
 # BE-20 · Los endpoints DELETE aparecen en Swagger bajo la etiqueta "deletions21312"
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 98e284f
 
 ## Ubicación
 - Endpoint: todos los DELETE de DeletionsController (ej. DELETE /api/v1/groups/:id) en la documentación Swagger (`/api/doc`)

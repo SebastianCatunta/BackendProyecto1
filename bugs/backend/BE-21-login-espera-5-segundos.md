@@ -1,7 +1,7 @@
 # BE-21 · Todo login tarda 5 segundos, incluso con credenciales correctas
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 37a5cb1
 
 ## Ubicación
 - Endpoint: POST /api/v1/auth/login

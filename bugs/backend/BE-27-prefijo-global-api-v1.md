@@ -1,7 +1,7 @@
 # BE-27 · Prefijo global `/api/v1` en vez de `/api`: las rutas documentadas dan 404
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 7e8a8c5
 
 ## Ubicación
 - Endpoint: todas las rutas (ej. POST /api/auth/login, GET /api/health)

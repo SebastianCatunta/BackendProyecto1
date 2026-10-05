@@ -1,7 +1,7 @@
 # BE-11 · Un docente puede gestionar grupos que no están a su cargo
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: c846901
 
 ## Ubicación
 - Endpoint: GET /api/v1/groups/:id/roster (y todo lo que usa `assertCanManage`: grade-sheet, finalize, notas, evaluaciones, borrado de notas/evaluaciones)

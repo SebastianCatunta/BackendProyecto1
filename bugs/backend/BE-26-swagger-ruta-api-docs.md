@@ -1,7 +1,7 @@
 # BE-26 · La documentación Swagger no está en /api/docs (404)
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 09bbe31
 
 ## Ubicación
 - Endpoint: GET /api/docs (Swagger UI)

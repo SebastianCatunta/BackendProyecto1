@@ -1,7 +1,7 @@
 # BE-04 · Los roles (@Roles) no se aplican: cualquier usuario accede a rutas de admin
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 95e4a04
 
 ## Ubicación
 - Endpoint: todas las rutas con `@Roles(...)` (ej. GET /api/v1/users)

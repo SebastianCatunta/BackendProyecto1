@@ -1,7 +1,7 @@
 # BE-16 · Crear evaluación responde 400 aunque la evaluación se crea
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 18eae3f
 
 ## Ubicación
 - Endpoint: POST /api/v1/evaluations

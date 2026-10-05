@@ -1,7 +1,7 @@
 # BE-19 · Marcar una notificación como leída no cambia `read`
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: f55c58c
 
 ## Ubicación
 - Endpoint: PATCH /api/v1/notifications/:id/read

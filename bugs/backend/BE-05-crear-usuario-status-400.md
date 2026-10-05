@@ -1,7 +1,7 @@
 # BE-05 · Crear usuario responde 400 aunque el usuario se crea
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: c9fbd7f
 
 ## Ubicación
 - Endpoint: POST /api/v1/users

@@ -1,7 +1,7 @@
 # BE-28 · `.env.example` apunta MongoDB al puerto 27018, pero Docker expone 27017
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: f24f3d2
 
 ## Ubicación
 - Endpoint: arranque de la API (conexión a MongoDB; afecta a todas las rutas)

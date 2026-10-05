@@ -1,7 +1,7 @@
 # BE-12 · "Mis matrículas" exige rol docente en vez de estudiante
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 23a855c
 
 ## Ubicación
 - Endpoint: GET /api/v1/enrollments/mine

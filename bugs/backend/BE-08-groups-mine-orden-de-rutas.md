@@ -1,7 +1,7 @@
 # BE-08 · GET /groups/mine devuelve 400 "ID invalido" (lo captura `:id`)
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: fc820dd
 
 ## Ubicación
 - Endpoint: GET /api/v1/groups/mine

@@ -1,7 +1,7 @@
 # BE-23 · El filtro `active` de usuarios acepta cualquier texto y lo trata como `false`
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: cda6b47
 
 ## Ubicación
 - Endpoint: GET /api/v1/users?active=...
