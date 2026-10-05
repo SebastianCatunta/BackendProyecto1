@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model, PopulateOptions } from 'mongoose';
 import { Paginated, paginate } from '../common/dto/pagination-query.dto';
+import { textPattern } from '../common/dto/query-helpers';
 import { TeachersService } from '../teachers/teachers.service';
 import { CreateFacultyDto, FacultiesQueryDto, UpdateFacultyDto } from './dto/faculty.dto';
 import { Faculty, FacultyDocument } from './schemas/faculty.schema';
@@ -25,7 +26,7 @@ export class FacultiesService {
   }
 
   async findAll(query: FacultiesQueryDto): Promise<Paginated<Faculty>> {
-    const filter: FilterQuery<FacultyDocument> = query.campus ? { campus: query.campus } : {};
+    const filter: FilterQuery<FacultyDocument> = query.campus ? { campus: textPattern(query.campus) } : {};
     const [data, total] = await Promise.all([
       this.model.find(filter).sort({ campus: 1, name: 1 }).skip(query.skip).limit(query.limit).populate(POPULATE).exec(),
       this.model.countDocuments(filter).exec(),
