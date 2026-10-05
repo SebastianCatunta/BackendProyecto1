@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MongoDB bug documentation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bug_id", "title", "status", "environment", "severity", "category", "database", "collection", "relevant_fields", "related_collections", "location", "reproduction", "expected_result", "actual_result", "evidence", "problem_description", "proposed_solution", "repair_plan", "approval", "executed_correction", "verification", "final_solution"],
+  "properties": {
+    "bug_id": {"type": "string", "pattern": "^BUG-[0-9]{3,}$"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["detected", "investigated", "solution-proposed", "repair-plan-generated", "awaiting-manual-execution", "manually-corrected", "verified", "blocked", "unresolved"]},
+    "environment": {"$ref": "#/$defs/environment"},
+    "severity": {"enum": ["low", "medium", "high", "critical"]},
+    "category": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["invalid-data", "missing-field", "invalid-type", "duplicate-data", "orphan-reference", "broken-reference", "schema-validation", "missing-index", "inefficient-index", "slow-query", "inconsistent-denormalized-data", "migration-error", "application-database-contract", "unknown"]}},
+    "database": {"type": "string", "minLength": 1},
+    "collection": {"type": "string", "minLength": 1},
+    "relevant_fields": {"$ref": "#/$defs/strings"},
+    "related_collections": {"$ref": "#/$defs/strings"},
+    "location": {"type": "object", "required": ["description", "application_files"], "properties": {"description": {"type": "string"}, "application_files": {"$ref": "#/$defs/strings"}, "endpoint": {"type": ["string", "null"]}}},
+    "reproduction": {"type": "object", "required": ["steps", "detection_query"], "properties": {"steps": {"$ref": "#/$defs/strings"}, "detection_query": {"type": ["string", "object", "array"]}}},
+    "expected_result": {"type": "string"},
+    "actual_result": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["operation", "affected_count", "examples", "expected_behavior", "actual_behavior", "confidence", "limitations"], "properties": {"operation": {"type": ["string", "object", "array"]}, "affected_count": {"type": ["integer", "null"], "minimum": 0}, "examples": {"type": "array"}, "expected_behavior": {"type": "string"}, "actual_behavior": {"type": "string"}, "confidence": {"enum": ["low", "medium", "high"]}, "limitations": {"$ref": "#/$defs/strings"}}}},
+    "problem_description": {"type": "string"},
+    "proposed_solution": {"type": "string"},
+    "repair_plan": {"type": ["string", "null"]},
+    "approval": {"type": "object", "required": ["status", "scope", "environment", "operation"], "properties": {"status": {"enum": ["not-approved", "approved", "rejected"]}, "scope": {"type": ["string", "object", "null"]}, "environment": {"$ref": "#/$defs/environment"}, "operation": {"type": ["string", "null"]}}},
+    "executed_correction": {"type": ["object", "null"], "required": ["provided_by", "reference", "environment", "database", "collection", "operation", "exact_filter", "matched_count", "modified_count", "changed_indexes", "skipped_documents", "errors"], "properties": {"provided_by": {"const": "user"}, "reference": {"type": "string", "minLength": 1}, "environment": {"$ref": "#/$defs/environment"}, "database": {"type": "string"}, "collection": {"type": "string"}, "operation": {"type": "string"}, "exact_filter": {"type": "object"}, "matched_count": {"type": ["integer", "null"], "minimum": 0}, "modified_count": {"type": ["integer", "null"], "minimum": 0}, "changed_indexes": {"$ref": "#/$defs/strings"}, "skipped_documents": {"type": "integer", "minimum": 0}, "errors": {"$ref": "#/$defs/strings"}}},
+    "verification": {"type": ["object", "null"], "required": ["status", "before_count", "after_count", "remaining_affected_count", "criteria", "new_inconsistencies", "evidence_reference"], "properties": {"status": {"enum": ["pending", "passed", "failed", "incomplete"]}, "before_count": {"type": ["integer", "null"], "minimum": 0}, "after_count": {"type": ["integer", "null"], "minimum": 0}, "remaining_affected_count": {"type": ["integer", "null"], "minimum": 0}, "criteria": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "boolean"}}, "new_inconsistencies": {"type": ["integer", "null"], "minimum": 0}, "evidence_reference": {"type": "string"}}},
+    "final_solution": {"type": ["string", "null"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"enum": ["manually-corrected", "verified"]}}}, "then": {"properties": {"executed_correction": {"type": "object"}, "approval": {"properties": {"status": {"const": "approved"}}}}}},
+    {"if": {"properties": {"status": {"const": "verified"}}}, "then": {"properties": {"final_solution": {"type": "string", "minLength": 1}, "verification": {"type": "object", "properties": {"status": {"const": "passed"}, "remaining_affected_count": {"const": 0}, "new_inconsistencies": {"const": 0}, "criteria": {"additionalProperties": {"const": true}}}}}}}
+  ],
+  "$defs": {
+    "environment": {"enum": ["local", "development", "testing", "staging", "production", "unknown"]},
+    "strings": {"type": "array", "items": {"type": "string"}},
+    "snapshot": {
+      "description": "Redacted normalized MCP output. Before and after use identical target, scope, query and criterion names. After adds approved plan and scoped user execution evidence. Counts measure remaining violations, not retained quarantined records. All checks must be fresh MCP reads; complete is false for truncation or missing checks.",
+      "type": "object",
+      "required": ["bug_id", "environment", "database", "collection", "scope", "detection_query", "source", "evidence_reference", "complete", "affected_count", "criteria"],
+      "properties": {
+        "bug_id": {"type": "string", "pattern": "^BUG-[0-9]{3,}$"},
+        "environment": {"$ref": "#/$defs/environment"},
+        "database": {"type": "string"}, "collection": {"type": "string"},
+        "scope": {"type": "string", "minLength": 1},
+        "detection_query": {"type": ["string", "object", "array"]},
+        "source": {"const": "read-only-mcp"}, "evidence_reference": {"type": "string", "minLength": 1},
+        "complete": {"type": "boolean"}, "affected_count": {"type": "integer", "minimum": 0},
+        "criteria": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "boolean"}},
+        "new_inconsistencies": {"type": "integer", "minimum": 0},
+        "limitations": {"$ref": "#/$defs/strings"},
+        "approved_plan_reference": {"type": "string"},
+        "execution_evidence": {"description": "User supplied, not inferred: add approved=true, approved_plan_reference, scope, provided_by=user, reference, environment/database/collection, operation, exact_filter, matched_count, modified_count, changed_indexes, skipped_documents, errors. Null counts require counts_not_applicable_reason.", "type": "object"}
+      }
+    }
+  }
+}
