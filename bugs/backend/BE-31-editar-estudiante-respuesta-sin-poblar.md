@@ -1,7 +1,7 @@
 # BE-31 · Editar estudiante devuelve `user` y `program` como IDs sin poblar
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: f39a3b9
 
 ## Ubicación
 - Endpoint: PATCH /api/students/:id

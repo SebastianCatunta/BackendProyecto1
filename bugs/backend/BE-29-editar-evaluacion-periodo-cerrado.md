@@ -1,7 +1,7 @@
 # BE-29 · Se puede editar el plan de evaluación de un grupo de un periodo cerrado
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 89fb590
 
 ## Ubicación
 - Endpoint: PATCH /api/evaluations/:id

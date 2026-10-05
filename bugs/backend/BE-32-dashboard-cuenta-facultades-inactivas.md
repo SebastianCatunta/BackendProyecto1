@@ -1,7 +1,7 @@
 # BE-32 · El tablero cuenta también las facultades inactivas
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 35d36b7
 
 ## Ubicación
 - Endpoint: GET /api/reports/dashboard

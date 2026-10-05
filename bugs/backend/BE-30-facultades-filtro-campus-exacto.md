@@ -1,7 +1,7 @@
 # BE-30 · El filtro `campus` de facultades distingue mayúsculas y exige texto exacto
 
 - Área: Backend
-- Commit: [hash corto]
+- Commit: 991946c
 
 ## Ubicación
 - Endpoint: GET /api/faculties?campus=...
