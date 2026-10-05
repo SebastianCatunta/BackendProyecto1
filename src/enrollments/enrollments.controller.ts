@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthUser, CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -47,6 +47,7 @@ export class EnrollmentsController {
   @ApiOperation({ summary: 'Cancelar una matricula activa (libera el cupo)' })
   @Roles(Role.Admin, Role.Estudiante)
   @Post(':id/cancel')
+  @HttpCode(200)
   cancel(@Param('id', ParseObjectIdPipe) id: string, @CurrentUser() user: AuthUser): Promise<Enrollment> {
     return this.enrollmentsService.cancel(id, user);
   }
