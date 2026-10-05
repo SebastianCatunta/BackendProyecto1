@@ -202,6 +202,14 @@ Datos del seed (`database/*.json`, los que carga `npm run db:import`). Diagnóst
 - **Después:** `"type":"aviso"`
 - **Cómo verificar:** Tras `npm run db:import`, el destinatario abre "Notificaciones" sin error.
 
+## Bug #26 — Perfil de estudiante inactivo con usuario activo y matrículas en curso
+- **Archivo:** `database/students.json`
+- **Severidad / categoría:** medium / inconsistent-denormalized-data
+- **Problema:** El perfil E20210046 tenía `active: false`, pero su usuario está activo y tiene matrículas `activa` en el periodo abierto 2026-2. El admin lo veía como "Inactivo" y no aparecía en los selectores de estudiantes activos (por ejemplo, "Matricular estudiante").
+- **Antes:** `"active":false`
+- **Después:** `"active":true`
+- **Cómo verificar:** Tras `npm run db:import`, E20210046 aparece "Activo" en Estudiantes (admin) y en el selector de "Matricular estudiante".
+
 ## Bugs de frontera (requieren coordinar con backend)
 - Ninguno pendiente: el equipo de backend ya corrigió el prefijo `/api` y el puerto.
 
