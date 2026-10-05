@@ -97,6 +97,7 @@ export class EnrollmentsService {
       await session.withTransaction(async () => {
         enrollment.status = EnrollmentStatus.Cancelled;
         await enrollment.save({ session });
+        await this.groupModel.updateOne({ _id: enrollment.group }, { $inc: { enrolled: -1 } }, { session });
       });
     } finally {
       await session.endSession();
